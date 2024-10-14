@@ -1,7 +1,7 @@
 {
   "name": "the-vizion-bot",
   "version": "1.0.0",
-  "description": "",
+  "description": "Made by Vizion and Danial Raza.",
   "type": "module",
   "main": "src/index.js",
   "scripts": {
