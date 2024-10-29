@@ -1,8 +1,9 @@
+# auto generated
+LICENSE
+
 # dependencies
 node_modules
-
-# env files
-.env
+pnpm-lock.yaml
 
 # production
 dist

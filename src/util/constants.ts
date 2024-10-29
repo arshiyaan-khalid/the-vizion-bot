@@ -1,26 +1,17 @@
-import { ButtonStyle, ComponentType } from "discord.js";
+import { ButtonStyle, ComponentType, type BaseMessageOptions, type Snowflake } from "discord.js";
 
 /**
  * The ids of the channels to mention members in when they first join the guild.
- * @type {import("discord.js").Snowflake}
  */
-export const CHANNEL_IDS_TO_MENTION_MEMBERS_IN = ["1294066339207708672", "1294479538004426762"];
+export const CHANNEL_IDS_TO_MENTION_MEMBERS_IN: Snowflake[] = ["1294066339207708672", "1294479538004426762"] as const;
 
 /**
- * Custom ids to role ids mapping.
- * The keys are the custom ids of the buttons in the "Choose Your Rank!" and "Choose Your Platform!" message, and the values are the role ids to assign to the member when they click the button.
- * @type {Record<string, import("discord.js").Snowflake>}
+ * Custom ids to platform role ids.
+ *
+ * The keys are the custom ids of the buttons in the "Choose Your Platform!" message,
+ * and the values are the role ids to assign to the member when they click the button.
  */
-export const CUSTOM_IDS_TO_ROLE_IDS = {
-  superSonicLegend: "1294086196120649728",
-  grandChampion: "1294126467298496583",
-  champion: "1294485335958487040",
-  diamond: "1294485742428491858",
-  platinum: "1294485817032573040",
-  gold: "1294485887648010251",
-  silver: "1294485931990057020",
-  bronze: "1294485972725006407",
-
+export const CUSTOM_IDS_TO_PLATFORM_ROLE_IDS: Record<string, Snowflake> = {
   steam: "1294486046133977139",
   epic: "1294486112580141138",
   xbox: "1294486197032321034",
@@ -29,50 +20,66 @@ export const CUSTOM_IDS_TO_ROLE_IDS = {
 };
 
 /**
- * The json data for the "Choose Your Platform!" message.
- * @type {import("discord.js").BaseMessageOptions}
+ * Custom ids to rank role ids.
+ *
+ * The keys are the custom ids of the buttons in the "Choose Your Rank!" and message,
+ * and the values are the role ids to assign to the member when they click the button.
  */
-export const PLATFORM_MESSAGE_JSON = {
+export const CUSTOM_IDS_TO_RANK_ROLE_IDS: Record<string, Snowflake> = {
+  superSonicLegend: "1294086196120649728",
+  grandChampion: "1294126467298496583",
+  champion: "1294485335958487040",
+  diamond: "1294485742428491858",
+  platinum: "1294485817032573040",
+  gold: "1294485887648010251",
+  silver: "1294485931990057020",
+  bronze: "1294485972725006407",
+};
+
+/**
+ * The json data for the "Choose Your Platform!" message.
+ */
+export const PLATFORM_MESSAGE_JSON: BaseMessageOptions = {
   embeds: [
     {
       title: "Choose Your Platform!",
       description: "Click the button that matches your platform.\n\nTo remove a platform, click the button again.",
-      color: 5814783,
+      color: 5_814_783,
     },
   ],
   components: [
     {
       components: [
         {
-          custom_id: "steam",
+          customId: "platform_steam",
           emoji: "1294484278536831006",
           label: "Steam",
           style: ButtonStyle.Primary,
           type: ComponentType.Button,
         },
         {
-          custom_id: "epic",
+          customId: "platform_epic",
           emoji: "1294484443955724318",
           label: "Epic Games",
           style: ButtonStyle.Primary,
           type: ComponentType.Button,
         },
         {
-          custom_id: "xbox",
+          customId: "platform_xbox",
           emoji: "1294484879161163847",
           label: "Xbox",
           style: ButtonStyle.Primary,
           type: ComponentType.Button,
         },
         {
-          custom_id: "playstation",
+          customId: "platform_playstation",
           emoji: "1294485101358485575",
           label: "PlayStation",
           style: ButtonStyle.Primary,
           type: ComponentType.Button,
         },
         {
-          custom_id: "switch",
+          customId: "platform_switch",
           emoji: "1294485225736372317",
           label: "Switch",
           style: ButtonStyle.Primary,
@@ -82,46 +89,45 @@ export const PLATFORM_MESSAGE_JSON = {
       type: ComponentType.ActionRow,
     },
   ],
-};
+} as const;
 
 /**
  * The json data for the "Choose Your Rank!" message.
- * @type {import("discord.js").BaseMessageOptions}
  */
-export const RANK_MESSAGE_JSON = {
+export const RANK_MESSAGE_JSON: BaseMessageOptions = {
   embeds: [
     {
       title: "Choose Your Rank!",
       description: "Click the button that matches your RL rank.\n\nTo remove a rank, click the button again.",
-      color: 5814783,
+      color: 5_814_783,
     },
   ],
   components: [
     {
       components: [
         {
-          custom_id: "superSonicLegend",
+          customId: "rank_superSonicLegend",
           emoji: "1294481519104233553",
           label: "Super Sonic Legend",
           style: ButtonStyle.Primary,
           type: ComponentType.Button,
         },
         {
-          custom_id: "grandChampion",
+          customId: "rank_grandChampion",
           emoji: "1294481789254893598",
           label: "Grand Champion",
           style: ButtonStyle.Primary,
           type: ComponentType.Button,
         },
         {
-          custom_id: "champion",
+          customId: "rank_champion",
           emoji: "1294482818167996486",
           label: "Champion",
           style: ButtonStyle.Primary,
           type: ComponentType.Button,
         },
         {
-          custom_id: "diamond",
+          customId: "rank_diamond",
           emoji: "1294483068790374410",
           label: "Diamond",
           style: ButtonStyle.Primary,
@@ -133,28 +139,28 @@ export const RANK_MESSAGE_JSON = {
     {
       components: [
         {
-          custom_id: "platinum",
+          customId: "rank_platinum",
           emoji: "1294483326052335647",
           label: "Platinum",
           style: ButtonStyle.Primary,
           type: ComponentType.Button,
         },
         {
-          custom_id: "gold",
+          customId: "rank_gold",
           emoji: "1294483643997356043",
           label: "Gold",
           style: ButtonStyle.Primary,
           type: ComponentType.Button,
         },
         {
-          custom_id: "silver",
+          customId: "rank_silver",
           emoji: "1294483780857499648",
           label: "Silver",
           style: ButtonStyle.Primary,
           type: ComponentType.Button,
         },
         {
-          custom_id: "bronze",
+          customId: "rank_bronze",
           emoji: "1294484061615685754",
           label: "Bronze",
           style: ButtonStyle.Primary,
@@ -164,10 +170,9 @@ export const RANK_MESSAGE_JSON = {
       type: ComponentType.ActionRow,
     },
   ],
-};
+} as const;
 
 /**
  * The id of the channel to send the "Choose Your Rank!" message in.
- * @type {import("discord.js").Snowflake}
  */
-export const ROLES_CHANNEL_ID = "1294479538004426762";
+export const ROLES_CHANNEL_ID: Snowflake = "1294479538004426762" as const;

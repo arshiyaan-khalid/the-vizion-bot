@@ -1,20 +1,45 @@
 {
+  "$schema": "https://json.schemastore.org/package.json",
   "name": "the-vizion-bot",
-  "version": "1.0.0",
   "description": "Made by Vizion and Danial Raza.",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "private": true,
   "type": "module",
-  "main": "src/index.js",
   "scripts": {
+    "build": "tsc",
+    "commitlint": "commitlint --edit",
+    "dev": "pnpm build && pnpm start",
+    "deploy": "pnpm build && node --env-file=.env dist/deploy-commands.js",
     "format": "prettier --write .",
-    "start": "node --env-file=.env src/index.js"
+    "format:check": "prettier --check .",
+    "lint": "eslint --fix src",
+    "lint:check": "eslint src",
+    "prepare": "is-ci || husky",
+    "start": "node --env-file=.env dist/index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
+    "@discordjs/core": "^2.0.0",
     "discord.js": "^14.16.3"
   },
   "devDependencies": {
-    "prettier": "^3.3.3"
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-angular": "^19.5.0",
+    "@types/node": "^22.8.2",
+    "eslint": "^8.57.0",
+    "eslint-config-neon": "^0.1.62",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "husky": "^9.1.6",
+    "is-ci": "^3.0.1",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3",
+    "typescript": "^5.6.3",
+    "zod": "^3.23.8"
+  },
+  "pnpm": {
+    "overrides": {
+      "discord-api-types": "0.37.103"
+    }
   }
 }
