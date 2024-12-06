@@ -1,6 +1,6 @@
 import { Events, userMention } from "discord.js";
-import { CHANNEL_IDS_TO_MENTION_MEMBERS_IN } from "../../util/index.js";
 import type { Event } from "../../types/index.js";
+import { CHANNEL_IDS_TO_MENTION_MEMBERS_IN } from "../../util/index.js";
 
 export default {
   name: Events.GuildMemberAdd,
